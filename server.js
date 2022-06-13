@@ -1,16 +1,20 @@
-const express = require("express");
-const app = express();
-const PORT = 8080; // default port 8080
+var express = require('express');
+var app = express();
 
-const urlDatabase = {
-  "b2xVn2": "http://www.lighthouselabs.ca",
-  "9sm5xK": "http://www.google.com"
-};
+// set the view engine to ejs
+app.set('view engine', 'ejs');
 
-app.get("/", (req, res) => {
-  res.send("Hello!");
+// use res.render to load up an ejs view file
+
+// index page
+app.get('/', function(req, res) {
+  res.render('pages/index');
 });
 
-app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}!`);
+// about page
+app.get('/about', function(req, res) {
+  res.render('pages/about');
 });
+
+app.listen(8080);
+console.log('Server is listening on port 8080');
